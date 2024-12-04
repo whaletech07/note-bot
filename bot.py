@@ -76,7 +76,7 @@ class Notes(commands.Cog):
 
     @app_commands.command(name="list_all", description="View all notes by all users of note-bot.")
     async def view_all(self, interaction: discord.Interaction):
-        if interaction.user.id == ID:
+        if interaction.user.id == int(ID):
             conn = sqlite3.connect(DB_NAME)
             cursor = conn.cursor()
             cursor.execute("SELECT user_id, note FROM notes")
@@ -99,7 +99,7 @@ class Notes(commands.Cog):
 
     @app_commands.command(name="clear_db", description="Clear all notes by all users of note-bot.")
     async def clear_all(self, interaction: discord.Interaction):
-        if interaction.user.id == ID:
+        if interaction.user.id == int(ID):
             conn = sqlite3.connect(DB_NAME)
             cursor = conn.cursor()
             cursor.execute("DELETE FROM notes")
